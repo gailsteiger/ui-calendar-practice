@@ -8,27 +8,37 @@
   /** @ngInject */
   function MainController($scope) {
 
-    $scope.eventSources = [
-      {
-        title  : 'event1',
-        start  : '2015-11-30'
-      },
-      {
-        title  : 'event2',
-        start  : '2015-12-01',
-        end    : '2015-12-03'
-      },
-      {
-        title  : 'event3',
-        start  : '2015-12-03T12:30:00',
-        allDay : false // will make the time show
-      }
-    ];
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
 
-    $scope.dayClick = dayClick;
-    $scope.eventClick = eventClick;
-    $scope.eventMouseover = eventMouseover;
-    $scope.eventMouseout = eventMouseout;
+    $scope.eventSources =
+          // your event source
+          {
+            events: [ // put the array in the `events` property
+              {
+                title  : 'event1',
+                start  : '2015-12-02'
+              },
+              {
+                title  : 'event2',
+                start  : '2015-11-30T18:35:00',
+                end    : '2015-12-01T08:12:00'
+              },
+              {
+                title  : 'event3',
+                start  : '2015-12-05T12:30:00',
+              }
+            ]
+          };
+
+
+
+    //$scope.dayClick = dayClick;
+    //$scope.eventClick = eventClick;
+    //$scope.eventMouseover = eventMouseover;
+    //$scope.eventMouseout = eventMouseout;
 
     /* config object */
     $scope.uiConfig = {
@@ -38,7 +48,7 @@
         header: false,
         defaultView: 'agendaWeek',
         columnFormat: {
-          week: 'ddd M/D'
+          week: 'ddd'
         },
         selectable: true,
         selectHelper: true,
