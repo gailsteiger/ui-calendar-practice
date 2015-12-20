@@ -23,7 +23,11 @@
 
     <div class="weekly-schedule" ng-controller="MainController">
 
-      <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+        <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
+            <h4>{{alertMessage}}</h4>
+        </div>
+
+      <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
 
     </div>
 

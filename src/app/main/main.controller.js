@@ -40,6 +40,8 @@
     //$scope.eventMouseover = eventMouseover;
     //$scope.eventMouseout = eventMouseout;
 
+    $scope.eventSelected = eventSelected;
+
     /* config object */
     $scope.uiConfig = {
       calendar:{
@@ -57,9 +59,10 @@
         defaultDate: '2015-11-30',
         timeFormat: 'h:mm',
         dayClick: $scope.dayClick,
-        eventClick: $scope.eventClick
+        eventClick: $scope.eventClick,
         //eventDrop: $scope.alertOnDrop,
-        //eventResize: $scope.alertOnResize
+        //eventResize: $scope.alertOnResize,
+        select: $scope.eventSelected
       }
     };
 
@@ -81,5 +84,10 @@
 
     }
 
+    function eventSelected( start, end, jsEvent) {
+      $scope.alertMessage = ('Event was selected ');
+      console.log(start);
+      console.log(end);
+    };
   }
 })();
