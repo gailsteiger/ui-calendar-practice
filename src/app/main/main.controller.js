@@ -13,28 +13,24 @@
         var m = date.getMonth ();
         var y = date.getFullYear ();
 
-        $scope.eventSources =
-          // your event source
-          {
-            events: [ // put the array in the `events` property
-                {
-                    title: 'event1',
-                    start: '2015-12-02'
-                },
-                {
-                    title: 'event2',
-                    start: '2015-11-30T06:35:00',
-                    end:   '2015-11-30T15:12:00'
-                },
-                {
-                    title: 'event3',
-                    start: '2015-12-05T12:30:00',
-                    end:   '2015-12-05T16:30:00'
-                }
-            ]
-          };
+        // your event source
 
-        $scope.events = [];
+
+        $scope.events = [
+            {
+                title: 'event1',
+                start: '2015-12-02'
+            },
+            {
+                title: 'event2',
+                start: '2015-11-30T06:35:00',
+                end:   '2015-11-30T15:12:00'
+            },
+            {
+                title: 'event3',
+                start: '2015-12-05T12:30:00',
+                end:   '2015-12-05T16:30:00'
+            }];
 
 
         //$scope.dayClick = dayClick;
@@ -56,7 +52,7 @@
                 },
                 selectable:   true,
                 selectHelper: true,
-                stick: true,
+                stick:        true,
                 slotDuration: '00:30:00',
                 firstDay:     1,
                 defaultDate:  '2015-11-30',
@@ -69,6 +65,7 @@
             }
         };
 
+        $scope.eventSources = [$scope.events];
 
         function dayClick(date, jsEvent, view) {
             alert (date);
@@ -90,10 +87,11 @@
             $scope.alertMessage = ('Event was selected ');
             console.log (start);
             console.log (end);
-            $scope.events.push({
+            $scope.events.push ({
+                id: 0,
                 title: ' ',
                 start: start,
-                end: end
+                end:   end
             });
         }
     }
