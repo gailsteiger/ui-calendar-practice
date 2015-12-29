@@ -17,24 +17,25 @@
 
 
         $scope.events = [
-            {
-                title: 'event1',
-                start: '2015-12-02'
-            },
-            {
-                title: 'event2',
-                start: '2015-11-30T06:35:00',
-                end:   '2015-11-30T15:12:00'
-            },
-            {
-                title: 'event3',
-                start: '2015-12-05T12:30:00',
-                end:   '2015-12-05T16:30:00'
-            }];
+            //{
+            //    title: 'event1',
+            //    start: '2015-12-02'
+            //},
+            //{
+            //    title: 'event2',
+            //    start: '2015-11-30T06:35:00',
+            //    end:   '2015-11-30T15:12:00'
+            //},
+            //{
+            //    title: 'event3',
+            //    start: '2015-12-05T12:30:00',
+            //    end:   '2015-12-05T16:30:00'
+            //}
+        ];
 
 
         //$scope.dayClick = dayClick;
-        //$scope.eventClick = eventClick;
+        $scope.eventClick = eventClick;
         //$scope.eventMouseover = eventMouseover;
         //$scope.eventMouseout = eventMouseout;
 
@@ -61,7 +62,8 @@
                 eventClick:   $scope.eventClick,
                 //eventDrop: $scope.alertOnDrop,
                 //eventResize: $scope.alertOnResize,
-                select:       $scope.eventSelected
+                select:       $scope.eventSelected,
+              timezone: 'local'
             }
         };
 
@@ -72,7 +74,7 @@
         }
 
         function eventClick(event, jsEvent, view) {
-
+          $scope.alertMessage = ('Event was clicked ');
         }
 
         function eventMouseover(event, jsEvent, view) {
