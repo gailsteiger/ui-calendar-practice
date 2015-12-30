@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, schedulerDialog) {
+  function MainController($scope, schedulerDialog, moment) {
 
     var date = new Date();
     var d = date.getDate();
@@ -16,29 +16,10 @@
     // your event source
 
 
-    $scope.events = [
-      //{
-      //    title: 'event1',
-      //    start: '2015-12-02'
-      //},
-      //{
-      //    title: 'event2',
-      //    start: '2015-11-30T06:35:00',
-      //    end:   '2015-11-30T15:12:00'
-      //},
-      //{
-      //    title: 'event3',
-      //    start: '2015-12-05T12:30:00',
-      //    end:   '2015-12-05T16:30:00'
-      //}
-    ];
+    $scope.events = [];
 
 
-    //$scope.dayClick = dayClick;
     $scope.eventClick = eventClick;
-    //$scope.eventMouseover = eventMouseover;
-    //$scope.eventMouseout = eventMouseout;
-
     $scope.eventSelected = eventSelected;
 
     /* config object */
@@ -62,8 +43,6 @@
         timeFormat:    'h:mm',
         dayClick:      $scope.dayClick,
         eventClick:    $scope.eventClick,
-        //eventDrop: $scope.alertOnDrop,
-        //eventResize: $scope.alertOnResize,
         select:        $scope.eventSelected,
         timezone:      'local'
       }
@@ -94,14 +73,6 @@
       });
     }
 
-    function eventMouseover(event, jsEvent, view) {
-
-    }
-
-    function eventMouseout(event, jsEvent, view) {
-
-    }
-
     function eventSelected(start, end, jsEvent) {
       $scope.alertMessage = ('Event was selected ');
 
@@ -114,8 +85,6 @@
           end:   moment(data.end)
         });
       });
-
-
     }
   }
 })();

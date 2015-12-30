@@ -25,6 +25,7 @@
 
                   $scope.startTime = startTime.toDate();
                   $scope.endTime = endTime.toDate();
+                    $scope.DOW = startTime.format('ddd');
 
                     $scope.ok = function () {
                         modalInstance.close({start: $scope.startTime, end: $scope.endTime});
