@@ -1,0 +1,31 @@
+<div ng-keypress="onKeyPress($event)" class="dialog--div-height100">
+    <div class="modal-header">
+        <h3 class="modal-title">{{msg.title}}</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="row">
+          <div class="form-element">
+            start: <uib-timepicker id="start" ng-model="startTime"
+                                   show-meridian="false" show-spinners="false"
+                                   style="display: inline-block;"></uib-timepicker>
+            end: <uib-timepicker id="end" ng-model="endTime"
+                                 show-meridian="false"  show-spinners="false"
+                                 style="display: inline-block;"></uib-timepicker>
+
+          </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+        <div class="left"></div>
+        <div class="right flex1">
+            <button class="button" type="button" ng-click="ok()" data-i18n="common.ok">OK</button>
+            <button class="button" type="button" ng-click="cancel()" data-i18n="common.cancel">Cancel</button>
+        </div>
+    </div>
+</div>

@@ -21,3 +21,10 @@ body {
 .fc-today {
   background-color: transparent !important;
 }
+
+.scheduler-dialog {
+  height: 300px;
+  width: 625px;
+  overflow: auto;
+
+}
