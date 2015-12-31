@@ -5,17 +5,19 @@
 
     <div class="modal-body">
 
-        <div class="row">
-            {{DOW}}
-        </div>
+        <!--<div class="row">-->
+            <!--{{DOW}}-->
+        <!--</div>-->
 
         <div class="row">
           <div class="form-element">
-            start: <uib-timepicker id="start" ng-model="startTime"
-                                   show-meridian="false" show-spinners="false"
+            {{startDOW}}
+            start: <uib-timepicker id="start" ng-model="startTime" minute-step="1"
+                                   show-meridian="false" show-spinners="true"
                                    style="display: inline-block;"></uib-timepicker>
-            end: <uib-timepicker id="end" ng-model="endTime"
-                                 show-meridian="false"  show-spinners="false"
+            {{endDOW}}
+            end: <uib-timepicker id="end" ng-model="endTime" minute-step="1"
+                                 show-meridian="false"  show-spinners="true"
                                  style="display: inline-block;"></uib-timepicker>
 
           </div>
@@ -30,6 +32,7 @@
         <div class="right flex1">
             <button class="button" type="button" ng-click="ok()" data-i18n="common.ok">OK</button>
             <button class="button" type="button" ng-click="cancel()" data-i18n="common.cancel">Cancel</button>
+            <button class="button" type="button" ng-click="delete()" data-i18n="common.delete">Delete</button>
         </div>
     </div>
 </div>

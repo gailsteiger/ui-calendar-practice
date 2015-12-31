@@ -6,21 +6,18 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, schedulerDialog, moment) {
+  function MainController($scope, schedulerDialog, moment, uiCalendarConfig) {
 
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    // your event source
-
-
     $scope.events = [];
-
 
     $scope.eventClick = eventClick;
     $scope.eventSelected = eventSelected;
+    $scope.dayClick = dayClick;
 
     /* config object */
     $scope.uiConfig = {
@@ -48,43 +45,48 @@
       }
     };
 
-    /*
-    moment notes
-    time format 'HH:mm:ss'
-    DOW start.day()
-     */
-
     $scope.eventSources = [$scope.events];
 
     function dayClick(date, jsEvent, view) {
-      alert(date);
+      //uiCalendarConfig.calendars['myCalendar'].fullCalendar ('unselect');
     }
 
     function eventClick(event, jsEvent, view) {
-      var origVal = _.findWhere($scope.events, {_id: event._id});
+      var eventIndex,
+        value;
+
+      eventIndex = _.findIndex($scope.events, function (obj) {
+        return obj._id === event._id;
+      });
+      value = $scope.events[eventIndex];
 
       $scope.alertMessage = ('Event was clicked ');
 
       var modalInstance = schedulerDialog.open(event.start, event.end);
 
       modalInstance.result.then(function (data) {
-        origVal.start = moment(data.start);
-          origVal.end = moment(data.end);
+        if (typeof data === 'object') {
+          value.start = moment(data.start);
+          value.end = moment(data.end);
+        } else if (data === 'delete') {
+          $scope.events.splice(eventIndex, 1);
+        }
+      });
+    }
+
+    function addEvent(start, end) {
+      $scope.events.push({
+        title: '',
+        start: start.local(),
+        end:   end.local()
       });
     }
 
     function eventSelected(start, end, jsEvent) {
       $scope.alertMessage = ('Event was selected ');
 
-      var modalInstance = schedulerDialog.open(start, end);
-
-      modalInstance.result.then(function (data) {
-        $scope.events.push({
-          title: '',
-          start: moment(data.start),
-          end:   moment(data.end)
-        });
-      });
+      addEvent(start, end);
+      uiCalendarConfig.calendars['myCalendar'].fullCalendar('unselect');
     }
   }
 })();
